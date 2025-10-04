@@ -16,7 +16,20 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g., curl, server-to-server)
     if (!origin) return callback(null, true)
+
+    // Allow exact matches
     if (allowedOrigins.indexOf(origin) !== -1) return callback(null, true)
+
+    // Allow any Vercel preview/deployment subdomain (e.g., https://my-app-pr-1.vercel.app)
+    try {
+      const hostname = new URL(origin).hostname
+      if (hostname && hostname.endsWith('.vercel.app')) return callback(null, true)
+    } catch (e) {
+      // ignore URL parse errors
+    }
+
+    // Log rejected origin for easier debugging
+    console.warn(`CORS rejection: origin not allowed -> ${origin}`)
     return callback(new Error('CORS policy: This origin is not allowed'))
   }
 }))
