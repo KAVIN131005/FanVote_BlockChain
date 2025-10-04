@@ -6,7 +6,7 @@ import Header from './components/Header'
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'https://fanvote-blockchain-1.onrender.com/api'
 
-// IPL 2025 Teams with proper logos and captains
+// IPL 2026 Teams with proper logos and captains
   const IPL_TEAMS = [
     {
       name: 'Mumbai Indians',
@@ -171,7 +171,7 @@ export default function App() {
                   <div className="bg-gradient-to-r from-gray-900 to-black border border-green-500 rounded-2xl shadow-2xl p-12 text-center">
                     <div className="text-8xl mb-6">🎉</div>
                     <h2 className="text-4xl font-bold text-green-400 mb-4">Vote Successfully Cast!</h2>
-                    <p className="text-gray-300 text-lg">Thank you <span className="text-blue-400 font-semibold">{currentVoter}</span> for participating in the IPL 2025 Fan Poll.</p>
+                    <p className="text-gray-300 text-lg">Thank you <span className="text-blue-400 font-semibold">{currentVoter}</span> for participating in the IPL 2026 Fan Poll.</p>
                     <div className="mt-6 inline-block bg-green-500/20 border border-green-400 rounded-full px-6 py-2">
                       <span className="text-green-300 font-medium">🔒 Vote secured on blockchain</span>
                     </div>

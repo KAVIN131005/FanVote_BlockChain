@@ -38,7 +38,7 @@ export default function Vote({ teams, voterId, onVoted }) {
         <h2 className="text-4xl font-bold text-white mb-4">Select Your IPL Champion</h2>
         <p className="text-gray-400 text-xl">
           Welcome, <span className="font-bold text-blue-400">{voterId}</span>! 
-          <br />Choose the franchise you believe will dominate IPL 2025
+          <br />Choose the franchise you believe will dominate IPL 2026
         </p>
       </div>
 
