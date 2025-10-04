@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Frontend build output
+/frontend/dist/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Misc
+coverage/
