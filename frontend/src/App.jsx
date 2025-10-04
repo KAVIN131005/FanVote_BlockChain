@@ -4,7 +4,7 @@ import Vote from './components/Vote'
 import Results from './components/Results'
 import Header from './components/Header'
 
-const API_BASE = 'http://localhost:3000/api'
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3000/api'
 
 // IPL 2025 Teams with proper logos and captains
   const IPL_TEAMS = [

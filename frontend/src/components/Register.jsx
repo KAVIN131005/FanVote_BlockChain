@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const API = 'http://localhost:3000/api'
+const API = import.meta.env.VITE_API_BASE || 'http://localhost:3000/api'
 
 export default function Register({ onRegistered }) {
   const [voterId, setVoterId] = useState('')

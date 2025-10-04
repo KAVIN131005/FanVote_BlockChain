@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: votechain-backend
+    env: node
+    region: oregon
+    plan: free
+    repo: https://github.com/KAVIN131005/FanVote_BlockChain
+    branch: main
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Set PORT in Render dashboard; Render will provide a PORT automatically
