@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const API = import.meta.env.VITE_API_BASE || 'http://localhost:3000/api'
+const API = import.meta.env.VITE_API_BASE || 'https://fanvote-blockchain-1.onrender.com/api'
 
 export default function Register({ onRegistered }) {
   const [voterId, setVoterId] = useState('')

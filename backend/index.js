@@ -7,7 +7,19 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Configure CORS to allow the deployed frontend and local dev hosts.
+// You can override the allowed frontend origin by setting FRONTEND_URL in Render/Vercel.
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://fanvote-eight.vercel.app'
+const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:5174']
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g., curl, server-to-server)
+    if (!origin) return callback(null, true)
+    if (allowedOrigins.indexOf(origin) !== -1) return callback(null, true)
+    return callback(new Error('CORS policy: This origin is not allowed'))
+  }
+}))
 app.use(bodyParser());
 
 app.use('/api', votesRouter);
