@@ -9,7 +9,7 @@ export default function Header() {
             <div className="text-6xl animate-bounce">🏏</div>
             <div>
               <h1 className="text-6xl font-black bg-gradient-to-r from-orange-400 via-red-500 to-yellow-500 bg-clip-text text-transparent tracking-tight">
-                IPL 2025
+                IPL 2026
               </h1>
               <div className="text-2xl font-bold text-white mt-2 tracking-widest">
                 FAN VOTE CHAMPIONSHIP
