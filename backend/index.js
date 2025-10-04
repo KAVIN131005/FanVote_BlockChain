@@ -10,29 +10,18 @@ const PORT = process.env.PORT || 3000;
 // Configure CORS to allow the deployed frontend and local dev hosts.
 // You can override the allowed frontend origin by setting FRONTEND_URL in Render/Vercel.
 const FRONTEND_URL = process.env.FRONTEND_URL || 'https://fanvote-eight.vercel.app'
-const allowedOrigins = [FRONTEND_URL, 'http://localhost:5173', 'http://localhost:5174']
 
-app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (e.g., curl, server-to-server)
-    if (!origin) return callback(null, true)
+// Temporarily allow all origins so the browser receives Access-Control-Allow-Origin
+// and we can debug the 400 response. For production, restrict this to specific origins
+// (e.g., FRONTEND_URL or a whitelist).
+app.use(cors())
 
-    // Allow exact matches
-    if (allowedOrigins.indexOf(origin) !== -1) return callback(null, true)
-
-    // Allow any Vercel preview/deployment subdomain (e.g., https://my-app-pr-1.vercel.app)
-    try {
-      const hostname = new URL(origin).hostname
-      if (hostname && hostname.endsWith('.vercel.app')) return callback(null, true)
-    } catch (e) {
-      // ignore URL parse errors
-    }
-
-    // Log rejected origin for easier debugging
-    console.warn(`CORS rejection: origin not allowed -> ${origin}`)
-    return callback(new Error('CORS policy: This origin is not allowed'))
-  }
-}))
+// Log incoming origin for debugging purposes
+app.use((req, res, next) => {
+  const origin = req.get('origin') || 'no-origin'
+  console.log(`[CORS DEBUG] incoming origin: ${origin} -> ${req.method} ${req.url}`)
+  next()
+})
 app.use(bodyParser());
 
 app.use('/api', votesRouter);

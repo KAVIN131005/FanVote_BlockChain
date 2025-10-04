@@ -20,6 +20,9 @@ router.post('/register', (req, res) => {
 
 // Cast a vote
 router.post('/vote', (req, res) => {
+  const origin = req.get('origin') || 'no-origin'
+  console.log(`[VOTE DEBUG] origin=${origin} body=${JSON.stringify(req.body)}`)
+
   const { voterId, candidate } = req.body || {};
   if (!voterId || !candidate) return res.status(400).json({ error: 'voterId and candidate required' });
   try {
